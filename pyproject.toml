@@ -1,0 +1,20 @@
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gym-snake"
+authors = []
+readme = "README.md"
+requires-python = ">=3.6"
+classifiers = ["License :: OSI Approved :: MIT License"]
+dynamic = ["version", "description"]
+
+dependencies = [
+    "gym", 
+    "numpy", 
+    "matplotlib"
+]

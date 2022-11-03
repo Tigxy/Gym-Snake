@@ -17,13 +17,12 @@ class Grid():
     FOOD_COLOR = np.array([0,0,255], dtype=np.uint8)
     SPACE_COLOR = np.array([0,255,0], dtype=np.uint8)
 
-    def __init__(self, grid_size=[30,30], unit_size=10, unit_gap=1):
+    def __init__(self, grid_size=[30,30], unit_size=10, unit_gap=1, rng=np.random.default_rng()):
         """
         grid_size - tuple, list, or ndarray specifying number of atomic units in
                     both the x and y direction
         unit_size - integer denoting the atomic size of grid units in pixels
         """
-
         self.unit_size = int(unit_size)
         self.unit_gap = unit_gap
         self.grid_size = np.asarray(grid_size, dtype=np.int) # size in terms of units
@@ -33,6 +32,7 @@ class Grid():
         self.grid = np.zeros((height, width, channels), dtype=np.uint8)
         self.grid[:,:,:] = self.SPACE_COLOR
         self.open_space = grid_size[0]*grid_size[1]
+        self._rng = rng
 
     def check_death(self, head_coord):
         """
@@ -220,7 +220,7 @@ class Grid():
             return False
         coord_not_found = True
         while(coord_not_found):
-            coord = (np.random.randint(0,self.grid_size[0]), np.random.randint(0,self.grid_size[1]))
+            coord = (self._rng.integers(0,self.grid_size[0]), self._rng.integers(0,self.grid_size[1]))
             if np.array_equal(self.color_of(coord), self.SPACE_COLOR):
                 coord_not_found = False
         self.draw(coord, self.FOOD_COLOR)
