@@ -18,9 +18,9 @@ Many of the aspects of the game can be changed for both environments. See the Ga
 - matplotlib
 
 ## Installation
-1. Clone this repository
-2. Navigate to the cloned repository
-3. Run command `$ pip install -e ./`
+- either install it as usual with pip: `python -m pip install git+https://github.com/tigxy/recommender-metrics.git`
+
+- or from source: `python -m pip install .`
 
 ## Rendering
 If you are experiencing trouble using the `render()` function while using jupyter notebook, insert:
